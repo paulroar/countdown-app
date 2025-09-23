@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Averia+Sans+Libre');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-neutral-950 text-neutral-200;
+}
+
+html.dark body {
+  @apply bg-neutral-950 text-neutral-200;
+}
+
+html.light body {
+  @apply bg-white text-neutral-900;
+}
+
+@layer components {
+   .flip-digit {
+    --fontPx: 136px;
+    position: relative;
+    width: calc(var(--fontPx) * 0.80);
+    height: calc(var(--fontPx) * 1.16);
+    perspective: 1400px;
+    font-size: var(--fontPx);
+    font-weight: 800;                 /* um pouco mais pesado */
+    color: #e5e7eb;                   /* neutral-200 to match reference */
+    line-height: 1;
+    letter-spacing: -0.018em;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* metades de base (atrás) */
+  .flip-digit .slice {
+    position: absolute; inset-inline: 0;
+    display: grid; place-items: center;
+    overflow: hidden;
+    background: #111;                 /* mais escuro p/ profundidade */
+    border: 1px solid #1f1f1f;
+    border-radius: 14px;
+  }
+  .flip-digit .slice.top     { top: 0;    height: calc(50% + 1px); }
+  .flip-digit .slice.bottom  { bottom: 0; height: calc(50% + 1px); }
+
+  /* linha/alto-relevo internos */
+  .flip-digit .slice.top::after,
+  .flip-digit .slice.bottom::before {
+    content: "";
+    position: absolute; left: 0; right: 0; height: 1px;
+    background: #202020;
+  }
+  .flip-digit .slice.top::after { bottom: 0; }
+  .flip-digit .slice.bottom::before { top: 0; }
+
+  .flip-digit .num {
+    display: block;
+    padding-block: 0.06em;           
+    color: inherit;
+  }
+
+  .flip-digit .slice.bottom .num,
+  .flip-digit .bottomFlip .num {
+    transform: translateY(-50%);
+  }
+
+  /* frentes animadas */
+  .flip-digit .flip {
+    position: absolute; inset-inline: 0;
+    display: grid; place-items: center;
+    overflow: hidden;
+    background: #0e0e0e;
+    border: 1px solid #1a1a1a;
+    border-radius: 14px;
+    backface-visibility: hidden;
+    will-change: transform, filter;
+  }
+  .flip-digit .topFlip    { top: 0;    height: calc(50% + 1px); transform-origin: bottom; z-index: 3; }
+  .flip-digit .bottomFlip { bottom: 0; height: calc(50% + 1px); transform-origin: top;    z-index: 2; }
+
+  /* brilho/sombra dinâmicos na frente */
+  .flip-digit .shine.top,
+  .flip-digit .shine.bottom {
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.06), rgba(0,0,0,0.0));
+    mix-blend-mode: overlay;
+  }
+  .flip-digit .shine.bottom {
+    background: linear-gradient(to top, rgba(255,255,255,0.05), rgba(0,0,0,0.0));
+  }
+
+  /* curvas e tempos parecidos com split-flap físico */
+  @keyframes flipTop {
+    0%   { transform: rotateX(0deg);    filter: brightness(1);    }
+    60%  { transform: rotateX(-92deg);  filter: brightness(0.78); }
+    100% { transform: rotateX(-92deg);  filter: brightness(0.78); }
+  }
+  @keyframes flipBottom {
+    0%   { transform: rotateX(88deg);   filter: brightness(0.78); }
+    100% { transform: rotateX(0deg);    filter: brightness(1);    }
+  }
+
+  /* top fecha rápido; bottom abre logo depois */
+  .flip-digit .topFlip.animate    { animation: flipTop 0.28s cubic-bezier(.2,.7,.3,1) forwards; }
+  .flip-digit .bottomFlip.animate { animation: flipBottom 0.34s cubic-bezier(.2,.7,.3,1) 0.28s forwards; }
+}
