@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 const navItems = [
   { name: 'Clock', icon: (<span>&#9200;</span>), path: '/clock' },
-  { name: 'Pomodoro', icon: (<span>&#8987;</span>), path: '/pomodoro' },
   { name: 'Timer', icon: (<span>&#x23F2;</span>), path: '/timer' },
   { name: 'Stopwatch', icon: (<span>&#x23F1;</span>), path: '/stopwatch' },
   { name: 'Countdown', icon: (<span>&#128197;</span>), path: '/countdown' },

@@ -1,11 +1,3 @@
-import { useEffect, useState } from "react";
-
-/**
- * FlipDigit – split-flap realista
- * - top → bottom com atraso
- * - brilho sombreado na dobra
- * - sem clipping de curvas
- */
 export default function FlipDigit({ digit = "0", sizePx = 128 }) {
   const [curr, setCurr] = useState(String(digit));
   const [prev, setPrev] = useState(String(digit));

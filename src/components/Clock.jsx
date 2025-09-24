@@ -14,7 +14,7 @@ const MoonIcon = () => (
   </svg>
 );
 
-export default function Clock() {
+export default function Clock({ is24HourFormat = false }) {
   const [now, setNow] = useState(new Date());
 
   useEffect(() => {
@@ -23,11 +23,13 @@ export default function Clock() {
   }, []);
 
   const h24 = now.getHours();
-  const hours = (h24 % 12) || 12;
+  const hours12 = (h24 % 12) || 12;
   const minutes = now.getMinutes();
   const seconds = now.getSeconds();
   const ampm = h24 >= 12 ? "PM" : "AM";
   const isDay = h24 >= 6 && h24 < 18; // 6am to 6pm
+
+  const displayHours = is24HourFormat ? h24 : hours12;
 
   const month = now.toLocaleString("en-US", { month: "short" });
   const dayNum = now.getDate().toString().padStart(2, "0");
@@ -45,15 +47,17 @@ export default function Clock() {
       {/* Main Time Display */}
       <div className="relative flex items-baseline justify-center w-full font-averia">
         <span className="text-[140px] font-bold text-neutral-200 tracking-tighter">
-          {String(hours).padStart(2, "0")}
+          {String(displayHours).padStart(2, "0")}
         </span>
         <span className="text-[120px] font-bold text-neutral-500/80 mx-1 animate-pulse">:</span>
         <span className="text-[140px] font-bold text-neutral-200 tracking-tighter">
           {String(minutes).padStart(2, "0")}
         </span>
-        <span className="text-4xl font-medium text-neutral-400/85 ml-4">
-          {ampm}
-        </span>
+        {!is24HourFormat && (
+          <span className="text-4xl font-medium text-neutral-400/85 ml-4">
+            {ampm}
+          </span>
+        )}
       </div>
 
       {/* Bottom Left: Date */}

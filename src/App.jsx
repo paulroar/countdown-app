@@ -13,6 +13,7 @@ import MetronomePage from './pages/MetronomePage';
 function App() {
   return (
     <ThemeProvider> {/* Envolver toda a aplicação com ThemeProvider */}
+    
       <div className="App font-averia">
         <Header />
         <Routes>

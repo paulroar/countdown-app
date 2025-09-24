@@ -3,7 +3,7 @@ export default function Switch({ isOn, onToggle }) {
     <button
       onClick={onToggle}
       className={`relative inline-flex items-center h-8 w-14 rounded-full transition-colors duration-300 focus:outline-none ${
-        isOn ? 'bg-green-500/80' : 'bg-neutral-700'
+        isOn ? 'bg-green-500/80' : 'bg-neutral-300 dark:bg-neutral-700'
       }`}
     >
       <span

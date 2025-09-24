@@ -3,8 +3,13 @@ import { createContext, useContext, useEffect, useState } from "react";
 const ThemeContext = createContext(null);
 
 export function ThemeProvider({ children }) {
-  // default: dark
-  const [theme, setTheme] = useState(() => localStorage.getItem("theme") ?? "dark");
+  const [theme, setTheme] = useState(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) return storedTheme;
+    
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return prefersDark ? "dark" : "light";
+  });
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");

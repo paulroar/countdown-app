@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import FlipNumber from './FlipNumber';
 
 function Timer() {

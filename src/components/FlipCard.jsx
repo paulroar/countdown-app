@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import FlipDigit from "./FlipNumber";
 
 export default function FlipCard({
