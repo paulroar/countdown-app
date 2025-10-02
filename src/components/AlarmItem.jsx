@@ -1,48 +1,64 @@
+import { useTranslation } from 'react-i18next';
+import { Trash2 } from 'lucide-react';
 import Switch from './Switch';
-
-const TrashIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-trash-2 text-neutral-600 dark:text-neutral-400 hover:text-red-500 transition-colors">
-    <path d="M3 6h18"/>
-    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-    <line x1="10" x2="10" y1="11" y2="17"/>
-    <line x1="14" x2="14" y1="11" y2="17"/>
-  </svg>
-);
+import PropTypes from 'prop-types';
 
 export default function AlarmItem({ alarm, is24HourFormat, onToggle, onDelete }) {
-  const formatHour = (h24) => {
+  const { t } = useTranslation();
+
+  const formatHour = (hour24) => {
     if (is24HourFormat) {
-      return String(h24).padStart(2, '0');
+      return String(hour24).padStart(2, '0');
     }
-    const hour12 = (h24 % 12) || 12;
+    const hour12 = hour24 % 12 || 12;
     return String(hour12).padStart(2, '0');
   };
 
-  const getAmPm = (h24) => {
+  const getAmPm = (hour24) => {
     if (is24HourFormat) return '';
-    return h24 >= 12 ? 'PM' : 'AM';
+    return hour24 >= 12 ? t('alarm.pm') : t('alarm.am');
   };
 
   return (
-    <div className="relative bg-neutral-100 dark:bg-neutral-800/60 p-4 rounded-lg flex flex-col">
+    <div className="rounded-2xl border border-slate-200 bg-white/85 p-5 shadow-sm transition hover:border-emerald-400 hover:shadow-lg dark:border-slate-700 dark:bg-slate-900/80">
       <div className="flex items-start justify-between">
-        <div className="flex items-baseline">
-          <span className="font-mono text-4xl font-bold text-neutral-900 dark:text-neutral-200">
+        <div className="flex items-baseline gap-2">
+          <span className="font-display text-4xl font-semibold text-slate-900 dark:text-slate-100">
             {formatHour(alarm.hour)}:{String(alarm.minute).padStart(2, '0')}
           </span>
           {!is24HourFormat && (
-            <span className="text-lg font-medium text-neutral-600 dark:text-neutral-400 ml-2">{getAmPm(alarm.hour)}</span>
+            <span className="text-lg font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-300">
+              {getAmPm(alarm.hour)}
+            </span>
           )}
         </div>
-        <button onClick={() => onDelete(alarm.id)} className="p-1">
-          <TrashIcon />
+        <button
+          type="button"
+          onClick={() => onDelete(alarm.id)}
+          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:border-rose-400 hover:text-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-300 dark:border-slate-700 dark:text-slate-300 dark:hover:border-rose-400 dark:hover:text-rose-400"
+          aria-label="Delete alarm"
+        >
+          <Trash2 size={18} />
         </button>
       </div>
-      
-      <div className="flex items-end justify-between mt-2">
-        <span className="text-neutral-800 dark:text-neutral-300 text-lg">{alarm.description}</span>
+
+      <div className="mt-4 flex items-center justify-between">
+        <span className="text-lg font-medium text-slate-700 dark:text-slate-200">{alarm.description}</span>
         <Switch isOn={alarm.isEnabled} onToggle={() => onToggle(alarm.id)} />
       </div>
     </div>
   );
 }
+
+AlarmItem.propTypes = {
+  alarm: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    hour: PropTypes.number.isRequired,
+    minute: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    isEnabled: PropTypes.bool.isRequired,
+  }).isRequired,
+  is24HourFormat: PropTypes.bool.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};

@@ -1,30 +1,36 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { AlarmClock, Clock, Hourglass, Music4, Timer, TimerReset } from 'lucide-react';
 
 const navItems = [
-  { name: 'Clock', icon: (<span>&#9200;</span>), path: '/clock' },
-  { name: 'Timer', icon: (<span>&#x23F2;</span>), path: '/timer' },
-  { name: 'Stopwatch', icon: (<span>&#x23F1;</span>), path: '/stopwatch' },
-  { name: 'Countdown', icon: (<span>&#128197;</span>), path: '/countdown' },
-  { name: 'Alarm', icon: (<span>&#8988;</span>), path: '/alarm' },
-  { name: 'Metronome', icon: (<span>&#9836;</span>), path: '/metronome' }, // Adicionado metrônomo
+  { key: 'nav.clock', icon: Clock, path: '/clock' },
+  { key: 'nav.timer', icon: Timer, path: '/timer' },
+  { key: 'nav.stopwatch', icon: TimerReset, path: '/stopwatch' },
+  { key: 'nav.countdown', icon: Hourglass, path: '/countdown' },
+  { key: 'nav.alarm', icon: AlarmClock, path: '/alarm' },
+  { key: 'nav.metronome', icon: Music4, path: '/metronome' },
 ];
 
 function NavigationMenu() {
+  const { t } = useTranslation();
+
   return (
-    <nav className="bg-neutral-800 p-2 rounded-full shadow-lg mb-8">
-      <ul className="flex space-x-4">
-        {navItems.map((item) => (
-          <li key={item.name}>
+    <nav className="mb-10 rounded-full border border-slate-200 bg-white/80 px-3 py-2 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/80">
+      <ul className="flex items-center gap-3">
+        {navItems.map(({ key, icon: Icon, path }) => (
+          <li key={key}>
             <NavLink
-              to={item.path}
+              to={path}
               className={({ isActive }) =>
-                `flex flex-col items-center p-3 rounded-full transition-colors duration-200
-                ${isActive ? 'bg-blue-600 text-white' : 'text-neutral-300 hover:bg-neutral-700'}`
+                `flex min-w-[84px] flex-col items-center rounded-full px-4 py-3 text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900 ${
+                  isActive
+                    ? 'bg-emerald-500 text-white shadow-lg'
+                    : 'text-slate-600 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800/80'
+                }`
               }
             >
-              <span className="text-2xl">{item.icon}</span>
-              <span className="text-sm mt-1">{item.name}</span>
+              <Icon size={22} strokeWidth={1.9} className="mb-1" />
+              <span className="tracking-wide">{t(key)}</span>
             </NavLink>
           </li>
         ))}
@@ -34,4 +40,3 @@ function NavigationMenu() {
 }
 
 export default NavigationMenu;
-

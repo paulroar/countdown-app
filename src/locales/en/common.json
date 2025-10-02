@@ -1,0 +1,107 @@
+{
+    "brand":  "Hoopacha",
+    "tagline":  "Helping you measure day and night, rhythm across space-time.",
+    "nav":  {
+                "clock":  "Clock",
+                "timer":  "Timer",
+                "stopwatch":  "Stopwatch",
+                "countdown":  "Countdown",
+                "alarm":  "Alarm",
+                "metronome":  "Metronome"
+            },
+    "home":  {
+                 "headline":  "Welcome to {{brand}}",
+                 "subheadline":  "All your timing tools in one elegant workspace. Choose a mode below to get started.",
+                 "why":  "Why the name \"Hoopacha\"?",
+                 "hoo":  "Hoo echoes the call of the owl - a symbol of quiet focus and night watchfulness. It reflects how we track time across long sessions and late hours: observant, calm, and precise.",
+                 "pacha":  "Pacha (Quechua pronunciation: [paht-cha]) is an Andean cosmological concept that links the physical world and space with time - essentially, a space-time view of reality. In Inca mythology and Andean thought, Pacha ties cycles of nature, life, and the cosmos together.",
+                 "unity":  "Hoopacha brings both ideas together: the owl\u0027s steady \"Hoo\" guiding you through the cycles of day and night, and Pacha\u0027s unity of space and time - a simple toolkit for routines, rhythms, and moments that matter."
+             },
+    "footer":  {
+                   "credits":  "{{brand}}"
+               },
+    "clock":  {
+                  "what":  "What This View Does",
+                  "whatDesc":  "The clock keeps the current time front and center so you can anchor your day. Check it when you need an at-a-glance update before a meeting, a break, or the next Pomodoro cycle.",
+                  "fact":  "Fun Fact",
+                  "factDesc":  "The first cesium atomic clock, built in 1955, was accurate enough to redefine the second. Modern atomic clocks drift less than one second over millions of years."
+              },
+    "timer":  {
+                  "what":  "What This View Does",
+                  "whatDesc":  "The timer helps you chunk your workflow into focused intervals. Set a preset for quick sprints or craft a custom HH:MM:SS duration for workouts, cooking, or deep work blocks.",
+                  "fact":  "Fun Fact",
+                  "factDesc":  "The Pomodoro Technique popularized the 25-minute timer in the late 1980s. Francesco Cirillo named it after his tomato-shaped kitchen timer, showing how analog habits can inspire digital productivity.",
+                  "custom":  "Custom Time",
+                  "settings":  "Settings",
+                  "alarmSound":  "Alarm Sound",
+                  "presets":  "Presets",
+                  "presetMinutes":  "{{minutes}} min"
+              },
+    "countdown":  {
+                      "what":  "What This View Does",
+                      "whatDesc":  "Countdown mode lets you chain multiple timers into a single routine. Build a series for workouts, study blocks, or stage cues and run them back-to-back without missing a beat.",
+                      "fact":  "Fun Fact",
+                      "factDesc":  "NASA engineers rely on meticulously scripted countdown sequences for rocket launches. Each callout gives teams across the globe a signal to perform checks within seconds of one another.",
+                      "add":  "+ Add Timer",
+                      "clone":  "Clone",
+                      "edit":  "Edit Duration",
+                      "delete":  "Delete",
+                      "pauseAll":  "Pause All",
+                      "resumeAll":  "Resume All",
+                      "startAll":  "Start All",
+                      "resetAll":  "Reset All",
+                      "noActive":  "No Active Timer",
+                      "cloneSuffix":  "{{name}} (Clone)"
+                  },
+    "stopwatch":  {
+                      "what":  "What This View Does",
+                      "whatDesc":  "Need to capture how long something takes? The stopwatch records real time with sub-second precision and keeps an ordered list of laps so you can analyze splits or best efforts afterward.",
+                      "fact":  "Fun Fact",
+                      "factDesc":  "The first handheld quartz stopwatch appeared in 1972 for the Olympic Games in Munich, delivering accuracy down to one hundredth of a second and changing competitive timing forever.",
+                      "reset":  "Reset",
+                      "lap":  "Lap",
+                      "start":  "Start",
+                      "resume":  "Resume",
+                      "pause":  "Pause",
+                      "lapHeader":  "Lap",
+                      "lapTimeHeader":  "Lap Time",
+                      "totalTimeHeader":  "Total Time"
+                  },
+    "alarm":  {
+                  "what":  "What This View Does",
+                  "whatDesc":  "Build personal wake-up calls, study reminders, or hydration alerts with flexible descriptions. Flip between 12-hour and 24-hour formats and toggle alarms on and off in seconds.",
+                  "fact":  "Fun Fact",
+                  "factDesc":  "The word \u0027alarm\u0027 comes from the Italian phrase \u0027all\u0027arme!\u0027 meaning \u0027to arms\u0027 - a military warning that eventually became the everyday buzz we rely on to start our mornings.",
+                  "set":  "Set new alarm",
+                  "twelve":  "12h",
+                  "twentyFour":  "24h",
+                  "add":  "Add alarm",
+                  "alarms":  "Alarms",
+                  "descriptionPlaceholder":  "Alarm description",
+                  "am":  "AM",
+                  "pm":  "PM",
+                  "validation":  {
+                                     "invalidTime":  "Please enter a valid hour and minute.",
+                                     "hourRange12":  "Please enter an hour between 1 and 12.",
+                                     "hourRange24":  "Please enter an hour between 0 and 23.",
+                                     "minuteRange":  "Please enter a minute between 0 and 59."
+                                 }
+              },
+    "metronome":  {
+                      "what":  "What This View Does",
+                      "whatDesc":  "Use the metronome to lock in rhythm during practice sessions, workouts, or presentations. Dial in the BPM and let the visual beat indicator keep your timing honest.",
+                      "fact":  "Fun Fact",
+                      "factDesc":  "Johann Maelzel patented the modern metronome in 1815, and Ludwig van Beethoven was one of the first composers to add tempo markings using BPM values, forever changing musical notation.",
+                      "title":  "Metronome",
+                      "subtitle":  "Tap play to keep a steady tempo. Adjust the BPM slider for your session.",
+                      "start":  "Start",
+                      "stop":  "Stop"
+                  },
+    "countdownPage":  {
+                          "limit":  "Free version limited to 3 timers!",
+                          "timerName":  "Timer {{number}}"
+                      },
+    "timerPage":  {
+                      "alarm":  "Alarm!"
+                  }
+}

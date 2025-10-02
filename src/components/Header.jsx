@@ -1,34 +1,33 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '../context/ThemeContext';
+import logoUrl from '../assets/hoopacha-logo.svg';
+import { Menu, Sun, Moon, Languages, Maximize2, Minimize2 } from 'lucide-react';
 
-const SunIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="5"/>
-    <line x1="12" y1="1" x2="12" y2="3"/>
-    <line x1="12" y1="21" x2="12" y2="23"/>
-    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-    <line x1="1" y1="12" x2="3" y2="12"/>
-    <line x1="21" y1="12" x2="23" y2="12"/>
-    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-  </svg>
-);
-
-const MoonIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-  </svg>
-);
+const navItems = [
+  { to: '/clock', label: 'nav.clock' },
+  { to: '/timer', label: 'nav.timer' },
+  { to: '/stopwatch', label: 'nav.stopwatch' },
+  { to: '/countdown', label: 'nav.countdown' },
+  { to: '/alarm', label: 'nav.alarm' },
+  { to: '/metronome', label: 'nav.metronome' },
+];
 
 function Header() {
+  const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(() => Boolean(document.fullscreenElement));
   const { theme, toggle } = useTheme();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  useEffect(() => {
+    const handleFullscreenChange = () => setIsFullscreen(Boolean(document.fullscreenElement));
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const closeMenu = () => setIsMenuOpen(false);
 
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
@@ -38,51 +37,96 @@ function Header() {
     }
   };
 
+  const toggleLanguage = () => {
+    const next = i18n.language.startsWith('pt') ? 'en' : 'pt';
+    i18n.changeLanguage(next);
+  };
+
   return (
-    <header className="bg-white dark:bg-neutral-900/80 dark:backdrop-blur-sm text-neutral-800 dark:text-neutral-300 p-4 shadow-md sticky top-0 z-50">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center space-x-4">
-          <button onClick={toggleMenu} className="lg:hidden text-2xl focus:outline-none">
-            &#9776;
+    <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur supports-[backdrop-filter]:backdrop-blur dark:border-slate-700/60 dark:bg-slate-900/75">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3">
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={toggleMenu}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-white dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus:ring-slate-500 dark:focus:ring-offset-slate-900 lg:hidden"
+            aria-label="Toggle navigation"
+          >
+            <Menu size={22} strokeWidth={1.8} />
           </button>
-          <Link to="/" className="flex items-center space-x-2">
-            <span className="text-blue-500 text-3xl">&#x23F0;</span>
-            <span className="text-2xl font-bold text-neutral-900 dark:text-white">Time Buddy</span>
+
+          <Link to="/" className="flex items-center">
+            <img src={logoUrl} alt={t('brand')} className="h-16 w-auto drop-shadow-sm" />
+            <span className="hidden font-cinzel-decorative font-bold text-2xl tracking-wide text-slate-800 dark:text-slate-100 sm:inline">
+              {t('brand')}
+            </span>
           </Link>
         </div>
 
-        <nav className="hidden lg:flex space-x-6">
-          <NavLink to="/clock" className={({ isActive }) => `hover:text-blue-500 dark:hover:text-white ${isActive ? 'text-blue-500' : ''}`}>Clock</NavLink>
-          <NavLink to="/timer" className={({ isActive }) => `hover:text-blue-500 dark:hover:text-white ${isActive ? 'text-blue-500' : ''}`}>Timer</NavLink>
-          <NavLink to="/stopwatch" className={({ isActive }) => `hover:text-blue-500 dark:hover:text-white ${isActive ? 'text-blue-500' : ''}`}>Stopwatch</NavLink>
-          <NavLink to="/countdown" className={({ isActive }) => `hover:text-blue-500 dark:hover:text-white ${isActive ? 'text-blue-500' : ''}`}>Countdown</NavLink>
-          <NavLink to="/alarm" className={({ isActive }) => `hover:text-blue-500 dark:hover:text-white ${isActive ? 'text-blue-500' : ''}`}>Alarm</NavLink>
-          <NavLink to="/metronome" className={({ isActive }) => `hover:text-blue-500 dark:hover:text-white ${isActive ? 'text-blue-500' : ''}`}>Metronome</NavLink>
+        <nav className="hidden items-center gap-6 text-base font-medium text-slate-600 dark:text-slate-200 lg:flex">
+          {navItems.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) =>
+                `transition-colors hover:text-emerald-500 focus:outline-none focus:text-emerald-500 dark:hover:text-emerald-300 ${
+                  isActive ? 'text-emerald-600 dark:text-emerald-300' : ''
+                }`
+              }
+            >
+              {t(label)}
+            </NavLink>
+          ))}
         </nav>
 
-        <div className="flex items-center space-x-4">
-          <button onClick={toggle} className="p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-700 focus:outline-none transition-colors">
-            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label="Toggle theme"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-white dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus:ring-slate-500 dark:focus:ring-offset-slate-900"
+          >
+            {theme === 'dark' ? <Sun size={20} strokeWidth={1.9} /> : <Moon size={20} strokeWidth={1.9} />}
           </button>
 
-          <button className="text-2xl focus:outline-none">
-            🌐
+          <button
+            type="button"
+            onClick={toggleLanguage}
+            aria-label="Language selector"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-white dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus:ring-slate-500 dark:focus:ring-offset-slate-900"
+          >
+            <Languages size={20} strokeWidth={1.9} />
           </button>
 
-          <button onClick={toggleFullScreen} className="text-2xl focus:outline-none">
-            &#x21F1;
+          <button
+            type="button"
+            onClick={toggleFullScreen}
+            aria-label="Toggle full screen"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-white dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus:ring-slate-500 dark:focus:ring-offset-slate-900"
+          >
+            {isFullscreen ? <Minimize2 size={20} strokeWidth={1.9} /> : <Maximize2 size={20} strokeWidth={1.9} />}
           </button>
         </div>
       </div>
 
       {isMenuOpen && (
-        <div className="lg:hidden bg-neutral-100 dark:bg-neutral-800 mt-2 rounded-md shadow-lg">
-          <NavLink to="/clock" onClick={toggleMenu} className="block px-4 py-2 text-neutral-800 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700">Clock</NavLink>
-          <NavLink to="/timer" onClick={toggleMenu} className="block px-4 py-2 text-neutral-800 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700">Timer</NavLink>
-          <NavLink to="/stopwatch" onClick={toggleMenu} className="block px-4 py-2 text-neutral-800 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700">Stopwatch</NavLink>
-          <NavLink to="/countdown" onClick={toggleMenu} className="block px-4 py-2 text-neutral-800 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700">Countdown</NavLink>
-          <NavLink to="/alarm" onClick={toggleMenu} className="block px-4 py-2 text-neutral-800 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700">Alarm</NavLink>
-          <NavLink to="/metronome" onClick={toggleMenu} className="block px-4 py-2 text-neutral-800 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700">Metronome</NavLink>
+        <div className="lg:hidden border-t border-slate-200 bg-white/95 px-4 pb-4 pt-2 dark:border-slate-700 dark:bg-slate-900/95">
+          <nav className="flex flex-col gap-1">
+            {navItems.map(({ to, label }) => (
+              <NavLink
+                key={to}
+                to={to}
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  `rounded-lg px-4 py-2 text-base transition-colors hover:bg-slate-100 focus:bg-slate-100 focus:outline-none dark:hover:bg-slate-800 dark:focus:bg-slate-800 ${
+                    isActive ? 'text-emerald-600 dark:text-emerald-300' : 'text-slate-700 dark:text-slate-200'
+                  }`
+                }
+              >
+                {t(label)}
+              </NavLink>
+            ))}
+          </nav>
         </div>
       )}
     </header>

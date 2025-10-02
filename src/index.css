@@ -1,18 +1,46 @@
-@import url('https://fonts.googleapis.com/css?family=Averia+Sans+Libre');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;600&family=Rationale&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  @apply bg-neutral-50 text-neutral-900;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  @apply bg-slate-50 text-slate-800 antialiased;
 }
 
 html.dark body {
-  @apply bg-neutral-950 text-neutral-200;
+  @apply bg-slate-950 text-slate-100;
 }
 
 html.light body {
-  @apply bg-white text-neutral-900;
+  @apply bg-white text-slate-900;
 }
 
+.range-thumb {
+  @apply h-2 rounded-full bg-slate-200 dark:bg-slate-700;
+  appearance: none;
+}
+
+.range-thumb::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #10B981, #0EA5E9);
+  cursor: pointer;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.35);
+}
+
+.range-thumb::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #10B981, #0EA5E9);
+  cursor: pointer;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.35);
+}

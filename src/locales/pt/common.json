@@ -1,0 +1,107 @@
+{
+    "brand":  "Hoopacha",
+    "tagline":  "Ajudando você a medir dia e noite, ritmo através do espaço-tempo.",
+    "nav":  {
+                "clock":  "Relógio",
+                "timer":  "Temporizador",
+                "stopwatch":  "Cronômetro",
+                "countdown":  "Sequência",
+                "alarm":  "Alarme",
+                "metronome":  "Metrônomo"
+            },
+    "home":  {
+                 "headline":  "Bem-vindo ao {{brand}}",
+                 "subheadline":  "Todas as suas ferramentas de tempo em um só lugar elegante. Escolha um modo abaixo para começar.",
+                 "why":  "Por que o nome \"Hoopacha\"?",
+                 "hoo":  "Hoo ecoa o canto da coruja - símbolo de foco silencioso e vigilância noturna. Reflete como acompanhamos o tempo em longas jornadas e noites em claro: observadores, calmos e precisos.",
+                 "pacha":  "Pacha (pronúncia quéchua: [paht-cha]) é um conceito cosmológico andino que conecta o mundo físico e o espaço ao tempo - essencialmente, uma visão de espaço-tempo. Na mitologia Inca e no pensamento andino, Pacha une ciclos da natureza, da vida e do cosmos.",
+                 "unity":  "Hoopacha une essas ideias: o \"Hoo\" constante da coruja guiando você pelos ciclos de dia e noite, e a unidade de espaço-tempo de Pacha - um kit simples para rotinas, ritmos e momentos que importam."
+             },
+    "footer":  {
+                   "credits":  "{{brand}}"
+               },
+    "clock":  {
+                  "what":  "O que esta visão faz",
+                  "whatDesc":  "O relógio mantém a hora atual em destaque para você ancorar o dia. Consulte antes de reuniões, intervalos ou do próximo ciclo Pomodoro.",
+                  "fact":  "Curiosidade",
+                  "factDesc":  "O primeiro relógio atômico de césio, construído em 1955, foi tão preciso que redefiniu o segundo. Os relógios atômicos modernos atrasam menos de um segundo em milhões de anos."
+              },
+    "timer":  {
+                  "what":  "O que esta visão faz",
+                  "whatDesc":  "O temporizador ajuda a dividir o trabalho em blocos focados. Use predefinições para sprints rápidos ou configure HH:MM:SS personalizados para treinos, culinária ou sessões profundas.",
+                  "fact":  "Curiosidade",
+                  "factDesc":  "A Técnica Pomodoro popularizou o temporizador de 25 minutos no final dos anos 1980. Francesco Cirillo deu o nome por causa de seu timer de cozinha em formato de tomate, mostrando como hábitos analógicos podem inspirar produtividade digital.",
+                  "custom":  "Tempo personalizado",
+                  "settings":  "Configurações",
+                  "alarmSound":  "Som de alarme",
+                  "presets":  "Predefinições",
+                  "presetMinutes":  "{{minutes}} min"
+              },
+    "countdown":  {
+                      "what":  "O que esta visão faz",
+                      "whatDesc":  "A contagem sequencial permite agrupar vários temporizadores em uma única rotina. Monte séries para treinos, estudos ou cues de palco e rode tudo em sequência sem perder o ritmo.",
+                      "fact":  "Curiosidade",
+                      "factDesc":  "Engenheiros da NASA dependem de sequências de contagem meticulosamente roteirizadas para lançamentos de foguetes. Cada chamada fornece um sinal para equipes ao redor do mundo executarem checagens em segundos.",
+                      "add":  "+ Adicionar temporizador",
+                      "clone":  "Clonar",
+                      "edit":  "Editar duração",
+                      "delete":  "Excluir",
+                      "pauseAll":  "Pausar tudo",
+                      "resumeAll":  "Retomar tudo",
+                      "startAll":  "Iniciar tudo",
+                      "resetAll":  "Reiniciar tudo",
+                      "noActive":  "Nenhum temporizador ativo",
+                      "cloneSuffix":  "{{name}} (Clonado)"
+                  },
+    "stopwatch":  {
+                      "what":  "O que esta visão faz",
+                      "whatDesc":  "Precisa medir quanto tempo algo leva? O cronômetro registra o tempo real com precisão centesimal e mantém uma lista de voltas, permitindo analisar ritmo e melhor desempenho.",
+                      "fact":  "Curiosidade",
+                      "factDesc":  "O primeiro cronômetro de quartzo portátil surgiu nos Jogos Olímpicos de Munique em 1972, oferecendo precisão de centésimos de segundo e mudando as medições competitivas para sempre.",
+                      "reset":  "Reiniciar",
+                      "lap":  "Volta",
+                      "start":  "Iniciar",
+                      "resume":  "Retomar",
+                      "pause":  "Pausar",
+                      "lapHeader":  "Volta",
+                      "lapTimeHeader":  "Tempo da volta",
+                      "totalTimeHeader":  "Tempo total"
+                  },
+    "alarm":  {
+                  "what":  "O que esta visão faz",
+                  "whatDesc":  "Crie despertadores pessoais, lembretes de estudo ou alertas de hidratação com descrições flexíveis. Alterne entre formatos de 12h e 24h e ative ou desative alarmes em segundos.",
+                  "fact":  "Curiosidade",
+                  "factDesc":  "A palavra 'alarme' vem da expressão italiana 'all'arme!' que significa 'às armas' - um aviso militar que acabou se tornando o alerta diário para começarmos a manhã.",
+                  "set":  "Configurar novo alarme",
+                  "twelve":  "12h",
+                  "twentyFour":  "24h",
+                  "add":  "Adicionar alarme",
+                  "alarms":  "Alarmes",
+                  "descriptionPlaceholder":  "Descrição do alarme",
+                  "am":  "AM",
+                  "pm":  "PM",
+                  "validation":  {
+                                     "invalidTime":  "Insira uma hora e um minuto válidos.",
+                                     "hourRange12":  "Informe uma hora entre 1 e 12.",
+                                     "hourRange24":  "Informe uma hora entre 0 e 23.",
+                                     "minuteRange":  "Informe um minuto entre 0 e 59."
+                                 }
+              },
+    "metronome":  {
+                      "what":  "O que esta visão faz",
+                      "whatDesc":  "Use o metrônomo para manter o ritmo em treinos, práticas ou apresentações. Ajuste o BPM e deixe o indicador visual garantir a precisão do tempo.",
+                      "fact":  "Curiosidade",
+                      "factDesc":  "Johann Maelzel patenteou o metrônomo moderno em 1815, e Ludwig van Beethoven foi um dos primeiros compositores a adicionar marcações de tempo em BPM, mudando a notação musical.",
+                      "title":  "Metrônomo",
+                      "subtitle":  "Toque em iniciar para manter um ritmo constante. Ajuste o controle de BPM para sua sessão.",
+                      "start":  "Iniciar",
+                      "stop":  "Parar"
+                  },
+    "countdownPage":  {
+                          "limit":  "Versão gratuita limitada a 3 temporizadores!",
+                          "timerName":  "Temporizador {{number}}"
+                      },
+    "timerPage":  {
+                      "alarm":  "Alarme!"
+                  }
+}

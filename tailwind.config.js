@@ -8,7 +8,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'averia': ['"Averia Sans Libre"', 'sans-serif'],
+        cinzel: ['"Cinzel"', 'serif'],
+        'cinzel-decorative': ['"Cinzel Decorative"', 'serif'],
+        display: ['"Rationale"', 'sans-serif'],
       },
     },
   },
