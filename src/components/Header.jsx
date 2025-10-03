@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../context/ThemeContext';
@@ -21,6 +21,7 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(() => Boolean(document.fullscreenElement));
   const { theme, toggle } = useTheme();
+  const menuRef = useRef(null);
 
   useEffect(() => {
     const handleFullscreenChange = () => setIsFullscreen(Boolean(document.fullscreenElement));
@@ -126,12 +127,13 @@ function Header() {
       </div>
 
       <CSSTransition
+        nodeRef={menuRef}
         in={isMenuOpen}
         timeout={300}
         classNames="menu-primary"
         unmountOnExit
       >
-        <div className="lg:hidden border-t border-slate-200 bg-white/95 px-4 pb-4 pt-2 dark:border-slate-700 dark:bg-slate-900/95">
+        <div ref={menuRef} className="lg:hidden border-t border-slate-200 bg-white/95 px-4 pb-4 pt-2 dark:border-slate-700 dark:bg-slate-900/95">
           <nav className="flex flex-col gap-1">
             {navItems.map(({ to, label }) => (
               <NavLink
