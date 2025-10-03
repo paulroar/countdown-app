@@ -55,9 +55,9 @@ function Header() {
             <Menu size={22} strokeWidth={1.8} />
           </button>
 
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center" onClick={closeMenu}>
             <img src={logoUrl} alt={t('brand')} className="h-16 w-auto drop-shadow-sm" />
-            <span className="hidden font-cinzel-decorative font-bold text-2xl tracking-wide text-slate-800 dark:text-slate-100 sm:inline">
+            <span className="hidden font-cinzel-decorative font-bold text-2xl tracking-wide text-slate-800 dark:text-slate-100 lg:inline">
               {t('brand')}
             </span>
           </Link>

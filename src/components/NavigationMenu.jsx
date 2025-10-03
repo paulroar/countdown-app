@@ -16,7 +16,7 @@ function NavigationMenu() {
 
   return (
     <nav className="mb-10 rounded-full border border-slate-200 bg-white/80 px-3 py-2 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/80">
-      <ul className="flex items-center gap-3">
+      <ul className="flex flex-wrap justify-center items-center gap-3">
         {navItems.map(({ key, icon: Icon, path }) => (
           <li key={key}>
             <NavLink

@@ -6,7 +6,7 @@ function Home() {
   const brand = t('brand');
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-b from-slate-100 via-white to-slate-100 px-4 py-24 text-center dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <div className="min-h-screen w-full bg-gradient-to-b from-slate-100 via-white to-slate-100 px-4 py-12 md:py-24 text-center dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div className="mx-auto flex max-w-4xl flex-col items-center gap-8">
         <h1 className="text-4xl font-semibold leading-tight text-slate-800 md:text-6xl md:leading-tight dark:text-slate-100">
           {t('home.headline', { brand })}
