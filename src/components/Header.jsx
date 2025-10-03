@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from '../context/ThemeContext';
 import logoUrl from '../assets/hoopacha-logo.svg';
 import { Menu, Sun, Moon, Languages, Maximize2, Minimize2 } from 'lucide-react';
+import { CSSTransition } from 'react-transition-group';
+import './Header.css';
 
 const navItems = [
   { to: '/clock', label: 'nav.clock' },
@@ -123,7 +125,12 @@ function Header() {
         </div>
       </div>
 
-      {isMenuOpen && (
+      <CSSTransition
+        in={isMenuOpen}
+        timeout={300}
+        classNames="menu-primary"
+        unmountOnExit
+      >
         <div className="lg:hidden border-t border-slate-200 bg-white/95 px-4 pb-4 pt-2 dark:border-slate-700 dark:bg-slate-900/95">
           <nav className="flex flex-col gap-1">
             {navItems.map(({ to, label }) => (
@@ -142,7 +149,7 @@ function Header() {
             ))}
           </nav>
         </div>
-      )}
+      </CSSTransition>
     </header>
   );
 }
