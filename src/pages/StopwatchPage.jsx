@@ -67,21 +67,21 @@ export default function StopwatchPage() {
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-slate-100 via-white to-slate-100 px-4 pb-16 pt-24 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-10">
-        <Card className="flex w-[480px] flex-col items-center justify-center gap-6 p-8 text-center">
+        <Card className="flex w-full max-w-md flex-col items-center justify-center gap-6 p-4 text-center sm:p-8">
           <div className="flex items-baseline">
-            <span className="font-display text-[120px] font-semibold leading-none text-slate-900 dark:text-slate-100">
+            <span className="font-display text-7xl font-semibold leading-none text-slate-900 dark:text-slate-100 sm:text-[120px]">
               {formatTime(time)}
             </span>
-            <span className="ml-3 text-4xl font-display font-semibold text-emerald-500">
+            <span className="ml-1 font-display text-2xl font-semibold text-emerald-500 sm:ml-3 sm:text-4xl">
               .{formatMilliseconds(time)}
             </span>
           </div>
 
-          <div className="flex w-full items-center justify-between gap-3">
+          <div className="flex w-full flex-wrap items-center justify-center gap-3 sm:flex-nowrap sm:justify-between">
             <button
               type="button"
               onClick={handleReset}
-              className="rounded-lg border border-slate-300 bg-white/80 px-6 py-3 text-lg font-semibold text-slate-700 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:bg-slate-800"
+              className="rounded-lg border border-slate-300 bg-white/80 px-4 py-2 text-base font-semibold text-slate-700 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:bg-slate-800 sm:px-6 sm:py-3 sm:text-lg"
             >
               {t('stopwatch.reset')}
             </button>
@@ -89,14 +89,14 @@ export default function StopwatchPage() {
               type="button"
               onClick={handleLap}
               disabled={!isActive}
-              className="rounded-lg border border-emerald-400 bg-white/80 px-6 py-3 text-lg font-semibold text-emerald-600 transition hover:border-emerald-500 hover:text-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-300 disabled:cursor-not-allowed disabled:opacity-40 dark:border-emerald-500/70 dark:bg-slate-900/70 dark:text-emerald-300"
+              className="rounded-lg border border-emerald-400 bg-white/80 px-4 py-2 text-base font-semibold text-emerald-600 transition hover:border-emerald-500 hover:text-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-300 disabled:cursor-not-allowed disabled:opacity-40 dark:border-emerald-500/70 dark:bg-slate-900/70 dark:text-emerald-300 sm:px-6 sm:py-3 sm:text-lg"
             >
               {t('stopwatch.lap')}
             </button>
             <button
               type="button"
               onClick={handleToggle}
-              className="rounded-lg bg-emerald-500 px-6 py-3 text-lg font-semibold text-white shadow-lg transition hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              className="order-first w-full rounded-lg bg-emerald-500 px-4 py-2 text-base font-semibold text-white shadow-lg transition hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-400 sm:order-none sm:w-auto sm:px-6 sm:py-3 sm:text-lg"
             >
               {primaryButtonLabel}
             </button>

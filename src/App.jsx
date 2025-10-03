@@ -9,12 +9,14 @@ import StopwatchPage from './pages/StopwatchPage';
 import CountdownPage from './pages/CountdownPage';
 import AlarmPage from './pages/AlarmPage';
 import MetronomePage from './pages/MetronomePage';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <ThemeProvider>
       <div className="App font-cinzel">
         <Header />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/clock" element={<ClockPage />} />
